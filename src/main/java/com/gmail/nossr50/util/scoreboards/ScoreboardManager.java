@@ -340,6 +340,7 @@ public class ScoreboardManager {
         }
 
         for (String playerName : dirtyPowerLevels) {
+            try{
             McMMOPlayer mcMMOPlayer = UserManager.getPlayer(playerName);
 
             if (mcMMOPlayer == null) {
@@ -354,6 +355,7 @@ public class ScoreboardManager {
             for (ScoreboardWrapper wrapper : PLAYER_SCOREBOARDS.values()) {
                 wrapper.updatePowerLevel(player, power);
             }
+            }catch(Exception e){e.printStackTrace();}// fix InfiniteLoop nullpointer arrayindexoutofbounds.
         }
 
         dirtyPowerLevels.clear();
